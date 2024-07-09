@@ -1,5 +1,5 @@
 """
-URL configuration for drf_site project.
+URL configuration for drfsite project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -15,10 +15,29 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from person.views import ListPoet
+from django.urls import path, include, re_path
+from rest_framework import routers
+
+from person.views import *
+
+
+# router = routers.SimpleRouter()
+# router.register(r'listcreatepoet', CRUDPoet, basename="poet")
+# print(router.urls)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/listpoet/', ListPoet.as_view())
+    path('api/v1/auth/', include('rest_framework.urls')),
+    path('api/v1/listcreatepoet/', ListCreatePoet.as_view()),
+    path('api/v1/updatepoet/<int:pk>/', UpdataPoet.as_view()),
+    path('api/v1/retrivedeletepoet/<int:pk>/', DeleteRetrivePoet.as_view()),
+    path('api/auth/', include('djoser.urls')), #Registratsiya
+    re_path(r'^auth/', include('djoser.urls.authtoken')), #Autorizatsiya
 ]
+
+
+
+
+
+
