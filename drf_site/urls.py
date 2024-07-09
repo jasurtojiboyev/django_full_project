@@ -28,8 +28,8 @@ urlpatterns = [
     path('api/v1/listcreatepoet/', ListCreatePoet.as_view()),
     path('api/v1/updatepoet/<int:pk>/', UpdataPoet.as_view()),
     path('api/v1/retrivedeletepoet/<int:pk>/', DeleteRetrivePoet.as_view()),
-    path('api/auth/', include('djoser.urls')), #Registratsiya
-    re_path(r'^auth/', include('djoser.urls.authtoken')), #Autorizatsiya
+    path('api/auth/', include('djoser.urls')),
+    re_path(r'^auth/', include('djoser.urls.authtoken')),
 ]
 
 
