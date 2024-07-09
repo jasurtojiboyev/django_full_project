@@ -21,10 +21,6 @@ from rest_framework import routers
 from person.views import *
 
 
-# router = routers.SimpleRouter()
-# router.register(r'listcreatepoet', CRUDPoet, basename="poet")
-# print(router.urls)
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
